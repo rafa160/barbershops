@@ -4,6 +4,7 @@ enum UserStatus {
   admin,
   employee,
   customer,
+  master
 }
 
 class UserModel {
