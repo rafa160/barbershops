@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "644815172425",
+    "project_id": "kabanasbarbershop-580ff",
+    "storage_bucket": "kabanasbarbershop-580ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644815172425:android:b3fcb1c3346932b0c4e098",
+        "android_client_info": {
+          "package_name": "com.anduril.kabanas_barbershop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "644815172425-nh1ach0snvbgp7hjttf0u73o1arokccj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhO7T5p16npmB9vkkWN6nGKzYjWwLoicw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "644815172425-nh1ach0snvbgp7hjttf0u73o1arokccj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,29 @@
+String getErrorString(String code) {
+  switch (code) {
+    case 'ERROR_WEAK_PASSWORD':
+      return 'Sua senha é muito fraca.';
+    case 'ERROR_INVALID_EMAIL':
+      return 'Seu e-mail é inválido.';
+    case 'email-already-in-use':
+      return 'E-mail já está sendo utilizado em outra conta.';
+    case 'ERROR_INVALID_CREDENTIAL':
+      return 'Seu e-mail é inválido.';
+    case 'wrong-password':
+      return 'Sua senha está incorreta.';
+    case 'user-not-found':
+      return 'Não há usuário com este e-mail.';
+    case 'ERROR_USER_DISABLED':
+      return 'Este usuário foi desabilitado.';
+    case 'ERROR_TOO_MANY_REQUESTS':
+      return 'Muitas solicitações. Tente novamente mais tarde.';
+    case 'ERROR_OPERATION_NOT_ALLOWED':
+      return 'Operação não permitida.';
+    case 'sign_in_failed':
+      return 'Error ao tentar entrar com Gmail';
+    case 'network-request-failed':
+      return 'Erro de conexão, verifique sua internet';
+
+    default:
+      return 'Um erro indefinido ocorreu.';
+  }
+}
