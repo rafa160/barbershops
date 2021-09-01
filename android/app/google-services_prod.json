@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "287572410987",
+    "project_id": "mybarbercalendar",
+    "storage_bucket": "mybarbercalendar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:287572410987:android:fa2b9b8f184cab6d01a72e",
+        "android_client_info": {
+          "package_name": "com.anduril.kabanas_barbershop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "287572410987-leromackknk7hato5ok338ms782dcn27.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALqASs-oGxJBFi1sxmKdF083fblq21qyY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "287572410987-leromackknk7hato5ok338ms782dcn27.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

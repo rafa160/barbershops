@@ -58,6 +58,7 @@ dependencies:
   onesignal_flutter: ^3.2.3
   package_info: ^2.0.0
   emojis: ^0.9.3
+  flutter_translate: ^2.0.1
 
 
 dev_dependencies:
