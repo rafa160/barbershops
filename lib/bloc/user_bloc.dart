@@ -12,6 +12,7 @@ import 'package:kabanas_barbershop/helpers/firebase_erros.dart';
 import 'package:kabanas_barbershop/helpers/utils.dart';
 import 'package:kabanas_barbershop/models/hour_model.dart';
 import 'package:kabanas_barbershop/models/user_model.dart';
+import 'package:kabanas_barbershop/screens/login/login_module.dart';
 import 'package:kabanas_barbershop/screens/main/main_module.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -339,6 +340,25 @@ class UserBloc extends BlocBase {
   Future<void> changeSchedulable(bool value) {
     _schedulable = value;
     _streamControllerBool.add(_schedulable);
+  }
+
+  Future<void> resetPassword(String email, BuildContext context) async {
+    try {
+      _streamController.add(true);
+      await _auth.sendPasswordResetEmail(email: email);
+      ToastUtilsSuccess.showCustomToast(context, 'Solicitação enviada para o e-mail $email');
+      _streamController.add(false);
+      await Get.offAll(() => LoginModule());
+    } on FirebaseAuthException catch (e) {
+      _streamController.add(false);
+      var error = getErrorString(e.code);
+      if (e.code != null) {
+        ToastUtilsFail.showCustomToast(context, error);
+      } else {
+        ToastUtilsFail.showCustomToast(context, error);
+      }
+    }
+
   }
 
   @override
