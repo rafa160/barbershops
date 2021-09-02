@@ -172,8 +172,10 @@ class UserBloc extends BlocBase {
       _streamController.add(false);
       var error = getErrorString(e.code);
       if (e.code != null) {
+        _streamController.add(false);
         ToastUtilsFail.showCustomToast(context, error);
       } else {
+        _streamController.add(false);
         ToastUtilsFail.showCustomToast(context, 'error');
       }
     }

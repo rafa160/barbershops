@@ -183,6 +183,23 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ) : Container(),
               ),
+              CustomAnimatedContainer(
+                verticalOffset: 800,
+                milliseconds: 1500,
+                position: 7,
+                widget: userBloc.user.status.index == 3 ? Padding(
+                  padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
+                  child: CustomButton(
+                    widget: Text(
+                      'área do admin master',
+                      style: buttonColors,
+                    ),
+                    onPressed: () async {
+                      Get.to(() => EmployeeProfileModule(userBloc.user));
+                    },
+                  ),
+                ) : Container(),
+              ),
               SizedBox(
                 height: 20,
               ),

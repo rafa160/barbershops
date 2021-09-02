@@ -8,7 +8,7 @@ import 'package:kabanas_barbershop/app_module.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  Intl.defaultLocale = 'pt-pt';
+  Intl.defaultLocale = 'pt-br';
   // var delegate = await LocalizationDelegate.create(
   //     fallbackLocale: 'pt', supportedLocales: ['en', 'fr', 'pt']);
   runApp(AppModule());

@@ -19,6 +19,7 @@ class UserModel {
    UserStatus status;
    String category;
    String oneSignalId;
+   String storeId;
 
   UserModel(
       { this.id,
@@ -26,7 +27,7 @@ class UserModel {
        this.email,
        this.whatsApp,
        this.available,
-       this.admin, this.schedulable, this.status, this.category, this.oneSignalId});
+       this.admin, this.schedulable, this.status, this.category, this.oneSignalId, this.storeId});
 
   UserModel.fromDocument(DocumentSnapshot snapshot) {
     id = snapshot.id;
@@ -39,6 +40,7 @@ class UserModel {
     status = UserStatus.values[snapshot.get('role') as int];
     category = snapshot.get('category');
     oneSignalId = snapshot.get('one_signal_id');
+    // storeId = snapshot.get('store_id');
   }
 
   UserModel.fromJson(Map<String, dynamic> json) {
