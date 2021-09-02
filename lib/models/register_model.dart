@@ -11,7 +11,7 @@ class RegisterModel {
   DateTime date;
   String checkDate;
 
-  RegisterModel({this.id, this.hourId, this.userModel});
+  RegisterModel({this.id, this.hourId, this.userModel, this.employeeId, this.hour, this.checkDate, this.date});
 
   RegisterModel.fromDocument(DocumentSnapshot snapshot) {
     id = snapshot.id;
