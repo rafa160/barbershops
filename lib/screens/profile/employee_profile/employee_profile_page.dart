@@ -23,8 +23,8 @@ import 'package:url_launcher/url_launcher.dart';
 class EmployeeProfilePage extends StatefulWidget {
 
   final UserModel userModel;
-
-  const EmployeeProfilePage({Key key, this.userModel}) : super(key: key);
+  final int weekDay;
+  const EmployeeProfilePage({Key key, this.userModel, this.weekDay}) : super(key: key);
 
   @override
   _EmployeeProfilePageState createState() => _EmployeeProfilePageState();
@@ -52,29 +52,15 @@ class _EmployeeProfilePageState extends State<EmployeeProfilePage> {
                   milliseconds: 800,
                   horizontalOffset: 100,
                   position: 1,
-                  widget: StreamBuilder(
-                    initialData: [],
-                    stream: dateBloc.streamTomorrowDay,
-                    builder: (context, snapshot) {
-                      if (snapshot.data.isEmpty) {
-                        return ContainerPlaceholder(
-                          width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.height * 0.06,
-                          lines: 1,
-                        );
-                      } else {
-                        return Text( 'Atualizar lista para o próximo dia ${snapshot.data}?',
-                          style: subtitleMonthPageStyle,);
-                      }
-                    },
-                  ),
+                  widget: Text( 'Atualizar lista para o próxima semana?',
+                    style: subtitleMonthPageStyle,),
                 ),
                 CustomAnimatedContainer(
                   milliseconds: 800,
                   horizontalOffset: 100,
                   position: 2,
                   widget: Text(
-                    'Fique atento, clicando nesse botão irá atualizar sua lista, então só faça essa ação ao final do dia para não perder a agenda do dia atual.',
+                    'Fique atento, clicando nesse botão irá atualizar sua lista, então só faça essa ação ao final da semana(Domingo) para não perder a agenda do dia atual. Essa ação é irreversível',
                     style: alertDialogSubtitleText,
                   ),
                 ),
@@ -82,28 +68,28 @@ class _EmployeeProfilePageState extends State<EmployeeProfilePage> {
                   height: 20,
                 ),
                 CustomAnimatedContainer(
-                    milliseconds: 800,
-                    horizontalOffset: 100,
-                    position: 3,
-                    widget: StreamBuilder(
-                      initialData: [],
-                      stream: employeeProfileBloc.loadingStream,
-                      builder: (context, snapshot) {
-                        if(snapshot.data != true) {
-                          return CustomButton(
-                            widget: Text('atualizar', style: buttonColors,),
-                            onPressed: () async {
-                              employeeProfileBloc.updateHoursAvailability(context: context, id: widget.userModel.id);
-                            },
-                          );
-                        } else {
-                          return CustomButton(
-                            onPressed: () {},
-                            widget: CustomColorCircularProgressIndicator(),
-                          );
-                        }
-                      },
-                    ),
+                  milliseconds: 800,
+                  horizontalOffset: 100,
+                  position: 3,
+                  widget: StreamBuilder(
+                    initialData: [],
+                    stream: employeeProfileBloc.loadingStream,
+                    builder: (context, snapshot) {
+                      if(snapshot.data != true) {
+                        return CustomButton(
+                          widget: Text('atualizar', style: buttonColors,),
+                          onPressed: widget.weekDay == 7 ? () async {
+                            employeeProfileBloc.updateHoursAvailability(context: context, id: widget.userModel.id);
+                          } : null,
+                        );
+                      } else {
+                        return CustomButton(
+                          onPressed: () {},
+                          widget: CustomColorCircularProgressIndicator(),
+                        );
+                      }
+                    },
+                  ),
                 ),
                 SizedBox(
                   height: 20,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:kabanas_barbershop/app_module.dart';
+import 'package:kabanas_barbershop/bloc/date_bloc.dart';
 import 'package:kabanas_barbershop/bloc/user_bloc.dart';
 import 'package:kabanas_barbershop/bloc/version_bloc.dart';
 import 'package:kabanas_barbershop/components/colored_custom_container.dart';
@@ -23,6 +24,7 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   var userBloc = AppModule.to.getBloc<UserBloc>();
   var versionBloc = ProfileModule.to.getBloc<VersionBloc>();
+  var dateBloc = AppModule.to.getBloc<DateBloc>();
 
   @override
   Widget build(BuildContext context) {
@@ -161,7 +163,8 @@ class _ProfilePageState extends State<ProfilePage> {
                       style: buttonColors,
                     ),
                     onPressed: () async {
-                      Get.to(() => EmployeeProfileModule(userBloc.user));
+                      int weekDay = await dateBloc.getWeekDay();
+                      Get.to(() => EmployeeProfileModule(userBloc.user, weekDay));
                     },
                   ),
                 ) : Container(),

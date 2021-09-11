@@ -7,8 +7,9 @@ import 'package:kabanas_barbershop/screens/profile/employee_profile/employee_pro
 class EmployeeProfileModule extends ModuleWidget {
 
   final UserModel userModel;
+  final int weekDay;
 
-  EmployeeProfileModule(this.userModel);
+  EmployeeProfileModule(this.userModel, this.weekDay);
 
   @override
   List<Bloc> get blocs => [
@@ -21,7 +22,7 @@ class EmployeeProfileModule extends ModuleWidget {
   ];
 
   @override
-  Widget get view => EmployeeProfilePage(userModel: userModel);
+  Widget get view => EmployeeProfilePage(userModel: userModel, weekDay: weekDay,);
 
   static Inject get to => Inject<EmployeeProfileModule>.of();
 }

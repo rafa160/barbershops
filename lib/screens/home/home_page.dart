@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:kabanas_barbershop/app_module.dart';
 import 'package:kabanas_barbershop/bloc/date_bloc.dart';
-import 'package:kabanas_barbershop/bloc/one_signal_bloc.dart';
 import 'package:kabanas_barbershop/bloc/user_bloc.dart';
 import 'package:kabanas_barbershop/components/custom_animated_container.dart';
 import 'package:kabanas_barbershop/components/month_card.dart';
