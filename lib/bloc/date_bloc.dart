@@ -12,6 +12,7 @@ class DateBloc extends BlocBase {
     getActualDayStream();
     getNextDayStream();
     getWeekDayAsStream();
+    getCurrentMonthString();
   }
 
   DateTime now1 = DateTime.now();
@@ -22,6 +23,13 @@ class DateBloc extends BlocBase {
   set now(value) {
     _now = value;
   }
+
+  String _month = '';
+  String get month => _month;
+  set month(value) {
+    _month = value;
+  }
+
 
   final _streamActualDay = BehaviorSubject<String>();
   Stream<String> get streamActualDay => _streamActualDay.stream;
@@ -90,6 +98,12 @@ class DateBloc extends BlocBase {
     weekDay = await getWeekDay();
     print(weekDay);
     _streamWeekDayController.add(weekDay);
+  }
+
+  Future<String> getCurrentMonthString() async {
+    _month = DateFormat('MMMM').format(now1);
+    print('$_month');
+    return _month;
   }
 
   @override

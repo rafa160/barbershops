@@ -51,36 +51,41 @@ class _HomePageState extends State<HomePage> {
                   'Agende seu horário com Kabañas BarberShop.', style: enterpriseText,
                 ),
               ),
-              AnimationLimiter(
-                child: GridView.builder(
-                  shrinkWrap: true,
-                  itemCount: monthList.length,
-                  physics: NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 6,
-                    crossAxisSpacing: 8,
-                    childAspectRatio: 4 / 2.6,
-                  ),
-                  itemBuilder: (BuildContext context, int index) {
-                    return AnimationConfiguration.staggeredList(
-                      position: index,
-                      duration: const Duration(milliseconds: 1050),
-                      child: SlideAnimation(
-                        verticalOffset: 120,
-                        horizontalOffset: 50.0,
-                        child: FadeInAnimation(
-                          child: MonthCard(
-                            month: monthList[index],
-                            onTap: () async {
-                              await dateBloc.getCurrentMonth(monthList[index], context);
-                            },
-                          ),
-                        ),
+              FutureBuilder(
+                future: getTheMonths(dateBloc.month),
+                builder: (context, snapshot){
+                  return AnimationLimiter(
+                    child: GridView.builder(
+                      shrinkWrap: true,
+                      itemCount: monthList.length,
+                      physics: NeverScrollableScrollPhysics(),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 6,
+                        crossAxisSpacing: 3,
+                        childAspectRatio: 4 / 2.6,
                       ),
-                    );
-                  },
-                ),
+                      itemBuilder: (BuildContext context, int index) {
+                        return AnimationConfiguration.staggeredList(
+                          position: index,
+                          duration: const Duration(milliseconds: 1050),
+                          child: SlideAnimation(
+                            verticalOffset: 120,
+                            horizontalOffset: 50.0,
+                            child: FadeInAnimation(
+                              child: MonthCard(
+                                month: monthList[index],
+                                onTap: () async {
+                                  await dateBloc.getCurrentMonth(monthList[index], context);
+                                },
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  );
+                },
               ),
               SizedBox(
                 height: 30,

@@ -119,5 +119,57 @@ bool checkDateTimeFormatted(String hour) {
   }
 }
 
+Map<String, int> monthsMap = {
+  'janeiro': 1,
+  'fevereiro': 2,
+  'março':3,
+  'abril': 4,
+  'maio': 5,
+  'junho': 6,
+  'julho': 7,
+  'agosto': 8,
+  'setembro': 9,
+  'outubro': 10,
+  'novembro': 11,
+  'dezembro': 12,
+};
 
+List<String> filteredMonthList = [];
+
+Future<List<String>> getTheMonths(String month) async {
+  int valueToBeRemoved = valueToRemove(month);
+  print(valueToBeRemoved);
+  monthList.removeRange(0, valueToBeRemoved);
+  filteredMonthList.addAll(monthList);
+  return filteredMonthList;
+}
+
+int valueToRemove(String month) {
+  switch(month) {
+    case 'janeiro':
+      return 0;
+    case 'fevereiro':
+      return 1;
+    case 'março':
+      return 2;
+    case 'abril':
+      return 3;
+    case 'maio':
+      return 4;
+    case 'junho':
+      return 5;
+    case 'julho':
+      return 6;
+    case 'agosto':
+      return 7;
+    case 'setembro':
+      return 8;
+    case 'outubro':
+      return 9;
+    case 'novembro':
+      return 10;
+    case 'dezembro':
+      return 11;
+  }
+}
 
