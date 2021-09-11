@@ -12,6 +12,7 @@ import 'package:kabanas_barbershop/components/custom_appbar.dart';
 import 'package:kabanas_barbershop/components/custom_button.dart';
 import 'package:kabanas_barbershop/components/custom_color_circular_indicator.dart';
 import 'package:kabanas_barbershop/components/custom_cupertino_card.dart';
+import 'package:kabanas_barbershop/components/new_card_client_info.dart';
 import 'package:kabanas_barbershop/helpers/style.dart';
 import 'package:kabanas_barbershop/helpers/utils.dart';
 import 'package:kabanas_barbershop/models/register_model.dart';
@@ -19,6 +20,7 @@ import 'package:kabanas_barbershop/screens/admin/admin_module.dart';
 import 'package:kabanas_barbershop/screens/admin/register_employee/register_employee_module.dart';
 import 'package:kabanas_barbershop/screens/admin/services/services_module.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:kabanas_barbershop/helpers/utils.dart';
 
 class AdminPage extends StatefulWidget {
   @override
@@ -121,29 +123,7 @@ class _AdminPageState extends State<AdminPage> {
                     switch (snapshot.connectionState) {
                       case ConnectionState.none:
                       case ConnectionState.waiting:
-                        return AnimationLimiter(
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            itemCount: 8,
-                            itemBuilder: (context, index) {
-                              return AnimationConfiguration.staggeredList(
-                                  position: index,
-                                  duration: const Duration(milliseconds: 550),
-                                  child: SlideAnimation(
-                                    verticalOffset: 20,
-                                    child: FadeInAnimation(
-                                      child: ContainerPlaceholder(
-                                        width: MediaQuery.of(context).size.width,
-                                        height: MediaQuery.of(context).size.height * 0.1,
-                                        lines: 1,
-                                      ),
-                                    ),
-                                  )
-                              );
-                            },
-                          ),
-                        );
+                        return CustomColorCircularProgressIndicator();
                       default:
                     }
                     return AnimationLimiter(
@@ -159,13 +139,9 @@ class _AdminPageState extends State<AdminPage> {
                               child: SlideAnimation(
                                 horizontalOffset: 120,
                                 child: FadeInAnimation(
-                                  child: CustomCupertinoCard(
-                                    registerModel: register,
-                                    onTap: () async {
-                                      String _url = whatsAppUrl(register.userModel.whatsApp);
-                                      await launch(_url);
-                                    },
-                                  ),
+                                  child: NewCardClientInfo(
+                                    register: register
+                                  )
                                 ),
                               )
                           );

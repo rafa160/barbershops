@@ -18,8 +18,6 @@ class _HomePageState extends State<HomePage> {
 
   var userBloc = AppModule.to.getBloc<UserBloc>();
   var dateBloc = AppModule.to.getBloc<DateBloc>();
-  var oneSignalBloc = AppModule.to.getBloc<OneSignalBloc>();
-
 
   @override
   Widget build(BuildContext context) {

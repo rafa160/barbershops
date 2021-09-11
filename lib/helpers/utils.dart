@@ -144,6 +144,11 @@ Future<List<String>> getTheMonths(String month) async {
   return filteredMonthList;
 }
 
+String getAmPmHour(String time) {
+
+  return time.toLowerCase();
+}
+
 int valueToRemove(String month) {
   switch(month) {
     case 'janeiro':
