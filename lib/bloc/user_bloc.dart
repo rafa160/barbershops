@@ -294,8 +294,8 @@ class UserBloc extends BlocBase {
     return null;
   }
 
-  Future<void> signUpWithEmailPasswordAdminPastor({String email, String password, String name, String categoryName, String role,
-      String id,String phone, BuildContext context, List<HourModel> hoursList}) async {
+  Future<void> registerEmployeeAndHours({String email, String password, String name, String categoryName, String role,
+    String id,String phone, BuildContext context, List<HourModel> hoursList}) async {
     try {
       _streamController.add(true);
       UserCredential result = await FirebaseAuth.instance
@@ -312,15 +312,18 @@ class UserBloc extends BlocBase {
         "schedulable": true,
         "role": 1,
         "category": categoryId,
-        "one_signal_id": null
+        "one_signal_id": null,
       };
       await _fireStore.collection('users').doc(result.user.uid).set(userData);
       for(final hour in hoursList) {
-        Map<String, dynamic> data = {
-          "hour": hour.hour,
-          "available": true
-        };
-        registerReference.add(data);
+        for(int i = 1; i < 7; i++){
+          Map<String, dynamic> data = {
+            "hour": hour.hour,
+            "available": true,
+            "week_day": i
+          };
+          registerReference.add(data);
+        }
       }
       _streamController.add(false);
       ToastUtilsSuccess.showCustomToast(context, 'Funcionário Cadastrado');

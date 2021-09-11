@@ -177,7 +177,7 @@ class _RegisterEmployeePageState extends State<RegisterEmployeePage> {
                               if (_formKey.currentState.validate()) {
                                 _formKey.currentState.save();
                                 List<HourModel> list = await hourBloc.getListOfHoursFromTheStreamList();
-                                await userBloc.signUpWithEmailPasswordAdminPastor(
+                                await userBloc.registerEmployeeAndHours(
                                     context: context,
                                     email: _formKey.currentState.value['email'],
                                     password: _formKey.currentState.value['password'],
