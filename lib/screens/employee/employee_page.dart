@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
+import 'package:kabanas_barbershop/app_module.dart';
+import 'package:kabanas_barbershop/bloc/date_bloc.dart';
 import 'package:kabanas_barbershop/components/custom_animated_container.dart';
 import 'package:kabanas_barbershop/components/custom_appbar.dart';
 import 'package:kabanas_barbershop/components/custom_color_circular_indicator.dart';
@@ -24,6 +26,7 @@ class EmployeePage extends StatefulWidget {
 class _EmployeePageState extends State<EmployeePage> {
 
   var employeeBloc = EmployeeModule.to.getBloc<EmployeeBloc>();
+  var dateBloc = AppModule.to.getBloc<DateBloc>();
 
   @override
   Widget build(BuildContext context) {
@@ -83,6 +86,7 @@ class _EmployeePageState extends State<EmployeePage> {
                                 child: EmployeeCard(
                                   onTap: () async {
                                     print(widget.month);
+                                    await dateBloc.weekDays(widget.month, employee);
                                     await Get.to(() => CalendarEmployeeModule(widget.month, employee));
                                   },
                                   employee: employee,

@@ -48,32 +48,33 @@ class EmployeeHoursBloc extends BlocBase {
 
   OneSignalBloc oneSignalBloc = new OneSignalBloc();
 
-  void getListOfHoursByEmployeeId(String id) {
+  void getListOfHoursByEmployeeId(String id, int weekNumber) {
     _employeeId = id;
-    hoursByEmployeeId = registerReference.orderBy('hour', descending: false).snapshots().map((event) => event.docs.map((e) => HourModel.fromDocument(e)).toList());
+    hoursByEmployeeId = registerReference.orderBy('hour', descending: false).where('week_day', isEqualTo: weekNumber).snapshots().map((event) => event.docs.map((e) => HourModel.fromDocument(e)).toList());
     print(hoursByEmployeeId.length);
   }
 
-  Future<void> createRegisterInEmployeeHourColletion({UserModel userModel, HourModel hourModel, BuildContext context, String oneSignalId}) async {
+  Future<void> createRegisterInEmployeeHourColletion({UserModel userModel, HourModel hourModel, BuildContext context, String oneSignalId, DateTime timeStamp}) async {
     _streamController.add(true);
     if(hourModel.available == true){
-      String day = await getDay();
-      DateTime now = new DateTime.now();
+      String day = await getStringDay(timeStamp);
       try {
         Map<String, dynamic> registerData = {
           "hour_id": hourId,
-          "date": now,
+          "date": timeStamp,
           "user": userModel.toMap(),
           "check_date": day,
           "hour": hourModel.hour,
-          "employee_id": _employeeId
+          "employee_id": _employeeId,
+          "client_id": userModel.id
         };
         _oneSignalEmployeeId = oneSignalId;
         await  _fireStore.collection('registers').add(registerData);
         await oneSignalBloc.postEmployeeNotification(
-          userName: userModel.name,
-          hour: hourModel.hour,
-          id:_oneSignalEmployeeId
+            time: day,
+            userName: userModel.name,
+            hour: hourModel.hour,
+            id:_oneSignalEmployeeId
         );
         await updateHour(hourId);
         _streamController.add(false);
@@ -108,6 +109,11 @@ class EmployeeHoursBloc extends BlocBase {
   Future<String> getDay() async {
     DateTime _now = DateTime.now();
     String formattedDate = DateFormat('dd/MM/yyyy').format(_now);
+    return formattedDate;
+  }
+
+  Future<String> getStringDay(DateTime time) async {
+    String formattedDate = DateFormat('dd/MM/yyyy').format(time);
     return formattedDate;
   }
 

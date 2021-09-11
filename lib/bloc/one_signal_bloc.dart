@@ -26,13 +26,13 @@ class OneSignalBloc extends BlocBase {
     _pushTokenId = value;
   }
 
-  Future<void> postEmployeeNotification({String id, String hour, String userName}) async {
+  Future<void> postEmployeeNotification({String id, String hour, String userName, String time}) async {
     var notification = OSCreateNotification(
-        playerIds: [id],
-        heading: 'Horário reservado às ${Emojis.twelveOClock}$hour',
-        content: 'Olá o $userName agendou um horário com você. ${Emojis.partyPopper}${Emojis.confettiBall}',
+      playerIds: [id],
+      heading: 'Horário reservado às ${Emojis.calendar}$time - ${Emojis.twelveOClock}$hour',
+      content: 'Olá o $userName agendou um horário com você. ${Emojis.partyPopper}${Emojis.confettiBall}',
     );
-   await OneSignal.shared.postNotification(notification);
+    await OneSignal.shared.postNotification(notification);
   }
 
   Future<String> getDeviceOneSignalId() async {
