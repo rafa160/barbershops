@@ -93,6 +93,7 @@ class _EmployeeHoursPageState extends State<EmployeeHoursPage> {
                               child: FadeInAnimation(
                                 child: HourComponent(
                                     hourModel: hourModel,
+                                    index: 1,
                                     onTap: () {
                                       showDialog(
                                           context: context,

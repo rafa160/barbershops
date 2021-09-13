@@ -102,6 +102,7 @@ class _CalendarPageState extends State<CalendarPage> {
                             child: FadeInAnimation(
                               child: HourComponent(
                                 hourModel: hourModel,
+                                index: 0,
                                 onTap: hourModel.available == true
                                     ? () {
                                         print(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kabanas_barbershop/helpers/style.dart';
+import 'package:kabanas_barbershop/helpers/utils.dart';
 import 'package:kabanas_barbershop/models/hour_model.dart';
 
 class HourComponent extends StatelessWidget {
@@ -8,10 +9,12 @@ class HourComponent extends StatelessWidget {
   final HourModel hourModel;
   final VoidCallback onTap;
   final VoidCallback onLongPress;
-  const HourComponent({Key key, this.hourModel, this.onTap, this.onLongPress}) : super(key: key);
+  final int index;
+  const HourComponent({Key key, this.hourModel, this.onTap, this.onLongPress, this.index}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String weekDay = getWeekDay(hourModel.weekDay);
     return GestureDetector(
       onTap: onTap,
       onLongPress: onLongPress,
@@ -51,6 +54,11 @@ class HourComponent extends StatelessWidget {
                               FontAwesomeIcons.lock,
                               size: 15,
                             ),
+                          ) : Container(),
+                          index == 1 ? Positioned(
+                            top: 10,
+                            right: 4,
+                            child: Text(weekDay),
                           ) : Container(),
                         ],
                       ),
