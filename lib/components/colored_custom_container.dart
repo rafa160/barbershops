@@ -17,7 +17,7 @@ class ColoredCustomContainer extends StatelessWidget {
           gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [Color(0xFFf45d27), Color(0xFFf5851f)]),
+              colors: [Color(0xff40dedf), Color(0xff0fb2ea)]),
           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(120))),
       child: child,
     );

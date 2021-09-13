@@ -24,7 +24,7 @@ class MonthCard extends StatelessWidget {
               gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors:checkMonth == true ? [Color(0xFFf68f32), Color(0xFFf8a457)] : [Color(0xFFCDCDCD), Color(0xFFCDCDCD)]),
+                  colors:checkMonth == true ? [Colors.white, Colors.white70] : [Color(0xFFCDCDCD), Color(0xFFCDCDCD)]),
               borderRadius: BorderRadius.all(
                   Radius.circular(10)
               )
@@ -38,7 +38,7 @@ class MonthCard extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.bottomRight,
                     child: Text(
-                        month, style: cardMonthTitle),
+                        month, style: activeCardMonthTitle),
                   ),
                 ),
               ],

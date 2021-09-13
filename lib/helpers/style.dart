@@ -34,7 +34,7 @@ TextStyle titleForms = GoogleFonts.nunito(
 
 TextStyle titleColoredForms = GoogleFonts.nunito(
   fontSize: 14,
-  color: Colors.deepOrangeAccent,
+  color: Color(0xff0fb2ea),
   fontWeight: FontWeight.bold,
 );
 
@@ -58,7 +58,7 @@ TextStyle enterpriseCardText = GoogleFonts.nunito(
 
 TextStyle textFormCard = GoogleFonts.nunito(
   fontSize: 18,
-  color: Colors.deepOrange,
+  color: Color(0xff40dedf),
   fontWeight: FontWeight.bold,
 );
 
@@ -103,6 +103,12 @@ TextStyle alertDialogTitle = GoogleFonts.nunito(
 TextStyle cardMonthTitle = GoogleFonts.nunito(
   fontSize: 18,
   color: Colors.white,
+  fontWeight: FontWeight.bold,
+);
+
+TextStyle activeCardMonthTitle = GoogleFonts.nunito(
+  fontSize: 18,
+  color: Color(0xff40dedf),
   fontWeight: FontWeight.bold,
 );
 
