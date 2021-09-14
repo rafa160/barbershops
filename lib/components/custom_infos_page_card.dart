@@ -30,7 +30,7 @@ class CustomInfoPageCard extends StatelessWidget {
                   gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
-                      colors: [Color(0xFFf68f32), Color(0xFFf8a457)]),
+                      colors: [Color(0xff0fb2ea), Color(0xFF0da0d2)]),
                   borderRadius: BorderRadius.all(
                       Radius.circular(10)
                   )

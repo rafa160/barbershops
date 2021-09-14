@@ -6,6 +6,7 @@ import 'package:kabanas_barbershop/bloc/date_bloc.dart';
 import 'package:kabanas_barbershop/bloc/user_bloc.dart';
 import 'package:kabanas_barbershop/components/curved_container.dart';
 import 'package:kabanas_barbershop/components/custom_animated_container.dart';
+import 'package:kabanas_barbershop/components/custom_png_card.dart';
 import 'package:kabanas_barbershop/components/month_card.dart';
 import 'package:kabanas_barbershop/helpers/style.dart';
 import 'package:kabanas_barbershop/helpers/utils.dart';
@@ -71,7 +72,7 @@ class _HomePageState extends State<HomePage> {
                     milliseconds: 1200,
                     position: 2,
                     widget: Text(
-                      'Agende seu horário com Kabañas BarberShop.', style: enterpriseText,
+                      'Agende seu horário com Kabañas BarberShop.', style: enterpriseWhiteText,
                     ),
                   ),
                   FutureBuilder(
@@ -96,12 +97,12 @@ class _HomePageState extends State<HomePage> {
                                 verticalOffset: 120,
                                 horizontalOffset: 50.0,
                                 child: FadeInAnimation(
-                                  child: MonthCard(
+                                  child: CustomPngCard(
                                     month: monthList[index],
                                     onTap: () async {
                                       await dateBloc.getCurrentMonth(monthList[index], context);
                                     },
-                                  ),
+                                  )
                                 ),
                               ),
                             );

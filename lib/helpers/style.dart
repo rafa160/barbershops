@@ -73,8 +73,15 @@ TextStyle enterpriseText = GoogleFonts.nunito(
   fontWeight: FontWeight.bold,
 );
 
+TextStyle enterpriseWhiteText = GoogleFonts.nunito(
+  fontSize: 16,
+  color: Colors.white,
+  fontWeight: FontWeight.bold,
+);
+
 TextStyle homeMessage = GoogleFonts.nunito(
   fontSize: 22,
+  color: Colors.white,
   fontWeight: FontWeight.bold,
 );
 
@@ -108,7 +115,13 @@ TextStyle cardMonthTitle = GoogleFonts.nunito(
 
 TextStyle activeCardMonthTitle = GoogleFonts.nunito(
   fontSize: 18,
-  color: Color(0xff40dedf),
+  color: Color(0xff0fb2ea),
+  fontWeight: FontWeight.bold,
+);
+
+TextStyle deactivetedCardMonthTitle = GoogleFonts.nunito(
+  fontSize: 18,
+  color: Colors.black,
   fontWeight: FontWeight.bold,
 );
 

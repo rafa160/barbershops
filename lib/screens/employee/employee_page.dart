@@ -71,8 +71,8 @@ class _EmployeePageState extends State<EmployeePage> {
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         mainAxisSpacing: 6,
-                        crossAxisSpacing: 8,
-                        childAspectRatio: 3 / 2.2,
+                        crossAxisSpacing: 3,
+                        childAspectRatio: 4 / 3.6,
                       ),
                       itemBuilder: (context, index) {
                         UserModel employee = snapshot.data[index];

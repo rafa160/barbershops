@@ -51,7 +51,7 @@ class _MainScreenState extends State<MainScreen> {
               child:  ConvexAppBar(
                 backgroundColor: Colors.white,
                 color: Colors.black26,
-                activeColor: Colors.deepOrangeAccent,
+                activeColor: Color(0xff40dedf),
                 style: TabStyle.react,
                 items: [
                   TabItem(icon: Icons.home, title: 'Home'),

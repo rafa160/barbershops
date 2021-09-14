@@ -188,12 +188,12 @@ class _InfosPageState extends State<InfosPage> {
                 Flexible(
                   flex: 1,
                   child: AnimationConfiguration.staggeredList(
-                      duration: const Duration(milliseconds: 1550),
-                      position: 3,
-                      child: SlideAnimation(
-                        horizontalOffset: 150,
-                        child: FadeInAnimation(
-                            child: CustomInfoPageCard(
+                    duration: const Duration(milliseconds: 1550),
+                    position: 3,
+                    child: SlideAnimation(
+                      horizontalOffset: 150,
+                      child: FadeInAnimation(
+                        child: CustomInfoPageCard(
                           width: MediaQuery.of(context).size.width,
                           onTap: () async {
                             String url = locationUrl();
@@ -205,8 +205,10 @@ class _InfosPageState extends State<InfosPage> {
                             size: 30,
                             color: Colors.white,
                           ),
-                        )),
-                      )),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),

@@ -38,7 +38,7 @@ class MonthCard extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.bottomRight,
                     child: Text(
-                        month, style: activeCardMonthTitle),
+                        month, style:checkMonth == true ? activeCardMonthTitle : deactivetedCardMonthTitle),
                   ),
                 ),
               ],
