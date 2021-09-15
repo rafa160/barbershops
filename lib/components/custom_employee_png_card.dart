@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:kabanas_barbershop/helpers/style.dart';
 import 'package:kabanas_barbershop/helpers/utils.dart';
+import 'package:kabanas_barbershop/models/user_model.dart';
 
-class CustomPngCard extends StatelessWidget {
+class CustomEmployeePngCard extends StatelessWidget {
 
-  final String month;
   final VoidCallback onTap;
+  final UserModel employee;
 
-  const CustomPngCard({Key key,  this.month, this.onTap}) : super(key: key);
+  const CustomEmployeePngCard({Key key, this.onTap, this.employee}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    bool checkMonth = getActualMonthColors(month);
+    String category = getCategoryText(employee.category);
+    String urlImage = getAssetsImage(employee.category);
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
         height: 168,
         width: 150,
         child: Card(
-          color: checkMonth == true ? Colors.white :  Color(0xFFCDCDCD),
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20)
           ),
@@ -32,7 +33,7 @@ class CustomPngCard extends StatelessWidget {
                   gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
-                      colors: checkMonth == true ? [Color(0xff40dedf), Color(0xff0fb2ea)] : [Color(0xFFCDCDCD), Color(0xFFCDCDCD)]),
+                      colors: [Color(0xff40dedf), Color(0xff0fb2ea)]),
                   borderRadius: BorderRadius.all(
                       Radius.circular(10)
                   )
@@ -41,23 +42,21 @@ class CustomPngCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 // crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  checkMonth == true ? Image.asset('assets/images/clean.png') : Container(),
-                  checkMonth == true ? Align(
+                  Image.asset(urlImage),
+                 Align(
                     alignment: Alignment.bottomCenter,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          month,
-                          style:checkMonth == true ? cardMonthTitle : deactivetedCardMonthTitle,
+                          employee.name,
+                          style:cardMonthTitle,
+                        ),
+                        Text(
+                          category,
+                          style:cardEmployeeSub,
                         ),
                       ],
-                    ),
-                  ) :  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Text(
-                      month,
-                      style:checkMonth == true ? cardMonthTitle : deactivetedCardMonthTitle,
                     ),
                   )
                 ],
@@ -66,6 +65,6 @@ class CustomPngCard extends StatelessWidget {
           ),
         ),
       ),
-    );;
+    );
   }
 }

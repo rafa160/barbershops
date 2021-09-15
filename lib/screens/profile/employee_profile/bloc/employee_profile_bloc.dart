@@ -80,7 +80,7 @@ class EmployeeProfileBloc extends BlocBase {
   }
 
   void getEmployeeHoursStreamListById() {
-    hoursByEmployeeId = registerReference.orderBy('hour', descending: false).orderBy('week_day', descending: false).snapshots().map((event) => event.docs.map((e) => HourModel.fromDocument(e)).toList());
+    hoursByEmployeeId = registerReference.orderBy('week_day', descending: false).orderBy('hour', descending: false).snapshots().map((event) => event.docs.map((e) => HourModel.fromDocument(e)).toList());
   }
 
   Future<void> deleteEmployeeHour({HourModel hourModel, BuildContext context}) async {

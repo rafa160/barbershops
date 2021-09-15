@@ -113,12 +113,6 @@ TextStyle cardMonthTitle = GoogleFonts.nunito(
   fontWeight: FontWeight.bold,
 );
 
-TextStyle activeCardMonthTitle = GoogleFonts.nunito(
-  fontSize: 18,
-  color: Color(0xff0fb2ea),
-  fontWeight: FontWeight.bold,
-);
-
 TextStyle deactivetedCardMonthTitle = GoogleFonts.nunito(
   fontSize: 18,
   color: Colors.black,

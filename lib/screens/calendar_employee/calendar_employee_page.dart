@@ -54,8 +54,8 @@ class _CalendarEmployeePageState extends State<CalendarEmployeePage> with Ticker
                   }
                   return TabBar(
                       controller: _nestedTabController,
-                      indicatorColor: Colors.orangeAccent,
-                      labelColor: Colors.deepOrange,
+                      indicatorColor: Colors.blue,
+                      labelColor: Colors.blue,
                       unselectedLabelColor: Colors.black54,
                       isScrollable: true,
                       tabs: dateBloc.tabs

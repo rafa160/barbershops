@@ -6,6 +6,7 @@ import 'package:kabanas_barbershop/bloc/date_bloc.dart';
 import 'package:kabanas_barbershop/components/custom_animated_container.dart';
 import 'package:kabanas_barbershop/components/custom_appbar.dart';
 import 'package:kabanas_barbershop/components/custom_color_circular_indicator.dart';
+import 'package:kabanas_barbershop/components/custom_employee_png_card.dart';
 import 'package:kabanas_barbershop/components/employee_card.dart';
 import 'package:kabanas_barbershop/helpers/style.dart';
 import 'package:kabanas_barbershop/models/user_model.dart';
@@ -83,13 +84,13 @@ class _EmployeePageState extends State<EmployeePage> {
                               verticalOffset: 120,
                               horizontalOffset: 50.0,
                               child: FadeInAnimation(
-                                child: EmployeeCard(
+                                child: CustomEmployeePngCard(
+                                  employee: employee,
                                   onTap: () async {
                                     print(widget.month);
                                     await dateBloc.weekDays(widget.month, employee);
                                     await Get.to(() => CalendarEmployeeModule(widget.month, employee));
                                   },
-                                  employee: employee,
                                 ),
                               ),
                             ),

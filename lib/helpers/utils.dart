@@ -1,4 +1,5 @@
 
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 List<String> monthList = [
@@ -192,6 +193,74 @@ String getWeekDay(int weekDay) {
       return 'sexta-feira';
     case 6:
       return 'sábado';
+  }
+}
+
+String getAssetsImage(String id) {
+  switch(id) {
+    case '27dp1J338nRcQYrSABbo':
+      return 'assets/images/woman.png';
+    case '52P0Ap8fzJVHIlaVdkH1':
+      return 'assets/images/maoepe.png';
+    case 'C8kZWVxaghG1FtW9Ti1m':
+      return 'assets/images/sobrancelha.png';
+    case 'Djvfrh5bpiB895lxmeiL':
+      return 'assets/images/hair_male.png';
+    case 'G1tsHB5LF9COY0pJaXK1':
+      return 'assets/images/maoepe.png';
+    case 'IlC7KhMYvaMOQw2KPsuR':
+      return 'assets/images/legs.png';
+    case 'Q0Wvs7GEMp2OgFtBlkUt':
+      return 'assets/images/maoepe.png';
+    case 'bgxTYPbFhDPCNxPr2s4S':
+      return 'assets/images/hair_male.png';
+    case 'cM8agvIEtoLbmbBcBCgU':
+      return 'assets/images/sobrancelha.png';
+    case 'y24s19VFb1atSL6mGWHR':
+      return 'assets/images/hair_male.png';
+    default:
+      return 'assets/images/hair_male.png';
+  }
+}
+
+Tab mondayTab = new Tab(
+  text: 'segunda-feira',
+);
+
+Tab tercaTab = new Tab(
+  text: 'terça-feira',
+);
+
+Tab quartaTab = new Tab(
+  text: 'quarta-feira',
+);
+
+Tab quintaTab = new Tab(
+  text: 'quinta-feira',
+);
+
+Tab sextaTab = new Tab(
+  text: 'sexta-feira',
+);
+
+Tab sabTab = new Tab(
+  text: 'sábado',
+);
+
+Tab getDayTab(int number) {
+  switch(number){
+    case 1:
+      return mondayTab;
+    case 2:
+      return tercaTab;
+    case 3:
+      return quartaTab;
+    case 4:
+      return quintaTab;
+    case 5:
+      return sextaTab;
+    case 6:
+      return sabTab;
   }
 }
 

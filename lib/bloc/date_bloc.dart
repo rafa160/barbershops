@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:kabanas_barbershop/components/custom_animation_toast.dart';
+import 'package:kabanas_barbershop/helpers/utils.dart';
 import 'package:kabanas_barbershop/models/user_model.dart';
 import 'package:kabanas_barbershop/screens/calendar_employee/calendar/calendar_module.dart';
 import 'package:kabanas_barbershop/screens/employee/employee_module.dart';
@@ -113,65 +114,31 @@ class DateBloc extends BlocBase {
   List<int> num = [];
   List<Tab> tabs = [];
 
-  Tab mondayTab = new Tab(
-    text: 'segunda-feira',
-  );
-
-  Tab tercaTab = new Tab(
-    text: 'terça-feira',
-  );
-
-  Tab quartaTab = new Tab(
-    text: 'quarta-feira',
-  );
-
-  Tab quintaTab = new Tab(
-    text: 'quinta-feira',
-  );
-
-  Tab sextaTab = new Tab(
-    text: 'sexta-feira',
-  );
-
-  Tab sabTab = new Tab(
-    text: 'sábado',
-  );
-
-  Tab getDayTab(int number) {
-    switch(number){
-      case 1:
-        return mondayTab;
-      case 2:
-        return tercaTab;
-      case 3:
-        return quartaTab;
-      case 4:
-        return quintaTab;
-      case 5:
-        return sextaTab;
-      case 6:
-        return sabTab;
-    }
-  }
-
   int i = 0;
   int dayCounter = 0;
   Tab get getTab => getDayTab(i);
   List<Widget> widget = [];
   List<DateTime> daysOfWeek = [];
 
+  //clear the lists just to be sure of not add same info again when it calls
+
   Future<void> weekDays(String month, UserModel userModel) async {
     tabs.clear();
     widget.clear();
     num.clear();
     daysOfWeek.clear();
+
     int dayCounter = 0;
     int _weeksDayNumbers = await getWeekDay();
-    for(int i = _weeksDayNumbers; i < 7; i ++){
+
+    for(int i = _weeksDayNumbers; i < 7; i ++) {
       final today = DateTime.now();
+
       final tomorrow = today.add(Duration(days: dayCounter));
+
       daysOfWeek.add(tomorrow);
       num.add(i);
+
       this.i = i;
       tabs.add(getTab);
       widget.add(
