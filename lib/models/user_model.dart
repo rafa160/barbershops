@@ -28,16 +28,17 @@ class UserModel {
        this.admin, this.schedulable, this.status, this.category, this.oneSignalId});
 
   UserModel.fromDocument(DocumentSnapshot snapshot) {
+    Map item = snapshot.data();
     id = snapshot.id;
-    email = snapshot.get('email');
-    name = snapshot.get('name');
-    available = snapshot.get('available');
-    admin = snapshot.get('admin');
-    whatsApp = snapshot.get('whats_app');
-    schedulable = snapshot.get('schedulable');
-    status = UserStatus.values[snapshot.get('role') as int];
-    category = snapshot.get('category');
-    oneSignalId = snapshot.get('one_signal_id');
+    email = item['email'];
+    name = item['name'];
+    available = item['available'];
+    admin = item['admin'];
+    whatsApp = item['whats_app'];
+    schedulable = item['schedulable'];
+    status = UserStatus.values[item['role'] as int];
+    category = item['category'];
+    oneSignalId = item['one_signal_id'];
   }
 
   UserModel.fromJson(Map<String, dynamic> json) {

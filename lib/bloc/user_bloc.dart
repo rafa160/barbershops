@@ -24,7 +24,7 @@ class UserBloc extends BlocBase {
   DocumentReference get _firestoreRef => FirebaseFirestore.instance.doc('users/$_employeeId');
   CollectionReference get registerReference => _firestoreRef.collection('hours');
   FirebaseAuth firebaseAuth;
-
+  User firebaseUser;
   UserCredential userCredential;
   UserModel user = new UserModel();
   // UserModel _internUser = new UserModel();
@@ -141,9 +141,8 @@ class UserBloc extends BlocBase {
     _streamController.add(true);
     try {
       userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
-
+      firebaseUser = userCredential.user;
       user = await getUserModel(id: userCredential.user.uid);
-      _name = user.name;
       _available = user.available;
       _admin = user.admin;
       whatsApp = user.whatsApp;
@@ -159,7 +158,7 @@ class UserBloc extends BlocBase {
         await _fireStore.collection('users').doc(user.id).update(userData);
       }
 
-      await _saveUserData();
+      await _saveUserData(name: user.name);
       await isLogged();
       if(user.available == true) {
         _streamController.add(false);
@@ -180,7 +179,7 @@ class UserBloc extends BlocBase {
     }
   }
 
-  Future _saveUserData() async {
+  Future _saveUserData({String name}) async {
 
     if (userCredential == null) {
       signOut();
@@ -289,6 +288,7 @@ class UserBloc extends BlocBase {
         return user;
       }
     } catch (e) {
+      _streamController.add(false);
       print(e);
     }
     return null;
